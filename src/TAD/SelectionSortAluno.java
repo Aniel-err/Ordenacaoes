@@ -52,7 +52,7 @@ public class SelectionSortAluno {
     }
 
     public static void main(String[] args) {
-        int[] tamanhos = {10000, 50000, 100000};
+        int[] tamanhos = {10000};
         String nomeArquivo = gerarNomeArquivo("selection");
 
         try (PrintWriter writer = new PrintWriter(new FileWriter(nomeArquivo))) {
