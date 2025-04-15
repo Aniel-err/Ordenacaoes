@@ -1,21 +1,20 @@
+package INT;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class BubbleSortTest {
+public class SelectionSortTest {
 
-    public static void bubbleSort(int[] arr) {
+    public static void selectionSort(int[] arr) {
         int n = arr.length;
-        boolean swapped;
         for (int i = 0; i < n - 1; i++) {
-            swapped = false;
-            for (int j = 0; j < n - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                    swapped = true;
+            int minIdx = i;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] < arr[minIdx]) {
+                    minIdx = j;
                 }
             }
-            if (!swapped) break;  
+            int temp = arr[minIdx];
+            arr[minIdx] = arr[i];
+            arr[i] = temp;
         }
     }
 
@@ -26,21 +25,21 @@ public class BubbleSortTest {
         }
         return vetor;
     }
-
+    
     public static double medirTempo(Runnable metodo) {
         long inicio = System.nanoTime();
         metodo.run();
         long fim = System.nanoTime();
         return (fim - inicio) / 1_000_000_000.0;
     }
-
+    
     public static void main(String[] args) {
         int[] tamanhos = {10000, 50000, 100000,300000,800000,1000000};
-
+        
         for (int tamanho : tamanhos) {
             int[] vetor = gerarVetorAleatorio(tamanho);
-            System.out.println("ordenando com bubble sort, tamanho: " + tamanho);
-            double tempo = medirTempo(() -> bubbleSort(vetor));
+            System.out.println("ordenando com selection sort, tamanho: " + tamanho);
+            double tempo = medirTempo(() -> selectionSort(vetor));
             System.out.printf("tempo de execucao: %.3f segundos\n\n", tempo);
         }
     }
