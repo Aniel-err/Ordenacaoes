@@ -1,4 +1,5 @@
 package TAD;
+
 public class MergeSortAluno {
     public static void mergeSort(Aluno[] arr, int inicio, int fim) {
         if (inicio < fim) {
@@ -14,7 +15,7 @@ public class MergeSortAluno {
         int i = inicio, j = meio + 1, k = 0;
 
         while (i <= meio && j <= fim) {
-            if (arr[i].nota <= arr[j].nota) {
+            if (arr[i].nota >= arr[j].nota) { // Alteração aqui para ordem decrescente
                 temp[k++] = arr[i++];
             } else {
                 temp[k++] = arr[j++];
@@ -33,6 +34,6 @@ public class MergeSortAluno {
         mergeSort(alunos, 0, alunos.length - 1);
         long fim = System.nanoTime();
         long tempoMs = (fim - inicio) / 1_000_000;
-        System.out.println("tempo de execucao: " + tempoMs + " ms");
+        System.out.println("tempo de execucao (decrescente): " + tempoMs + " ms");
     }
 }

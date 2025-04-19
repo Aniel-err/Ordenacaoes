@@ -13,7 +13,7 @@ public class QuickSortAluno {
         Aluno pivo = arr[fim];
         int i = inicio - 1;
         for (int j = inicio; j < fim; j++) {
-            if (arr[j].nota <= pivo.nota) {
+            if (arr[j].nota >= pivo.nota) {
                 i++;
                 Aluno temp = arr[i];
                 arr[i] = arr[j];
@@ -27,7 +27,7 @@ public class QuickSortAluno {
     }
 
     public static void main(String[] args) {
-        Aluno[] alunos = GeradorDeAlunos.gerarAlunos(10000);
+        Aluno[] alunos = GeradorDeAlunos.gerarAlunos(1000000);
         long inicio = System.nanoTime();
         quickSort(alunos, 0, alunos.length - 1);
         long fim = System.nanoTime();
